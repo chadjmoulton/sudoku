@@ -8,5 +8,11 @@ namespace Sudoku
 {
     class Board
     {
+        public int[,] board;
+
+        public Board(int[,] boardText)
+        {
+            board = boardText;
+        }
     }
 }
