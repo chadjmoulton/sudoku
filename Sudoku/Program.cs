@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Diagnostics;
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Text;
@@ -11,14 +12,17 @@ namespace Sudoku
     {
         static void Main(string[] args)
         {
-            string puzzle1 = AppDomain.CurrentDomain.BaseDirectory + "puzzle1";
+            string puzzle1 = AppDomain.CurrentDomain.BaseDirectory + "puzzle1.txt";
 
+            ReadFile(puzzle1);
         }
 
-        private string ReadFile(string puzzle)
+        static void ReadFile(string puzzle)
         {
             string line;
-            string fullFile;
+            char[,] grid = new char[9, 9];
+            int i = 0;
+            //string fullFile = "";
 
             try
             {
@@ -29,20 +33,54 @@ namespace Sudoku
                         while (sr.Peek() > -1)
                         {
                             line = sr.ReadLine();
+                            for(int j = 0; j < 9; j++)
+                            {
+                                grid[i, j] = line[j];
+                                /*for(int j = 0; j < 9; j++)
+                                {
+                                    grid[i, j] = line[j];
+                                }*/
+                            }
+                            //fullFile += line;
+                            i += 1;
                         }
                     }
-
-
-                    return "";
+                    for (int k = 0; k < 9; k++)
+                    {                        
+                        for (int j = 0; j < 9; j++)
+                        {
+                            Debug.Write(grid[k,j]);
+                        }
+                        Debug.Write("\n");
+                    }
+                    //return fullFile;
                 }
                 else
                 {
-                    return "";
+                    //return "";
                 }
             }
             catch (Exception e)
             {
-                return "";
+                Console.WriteLine(e.StackTrace);
+                //return "";
+            }
+        }
+
+        static void CreateGrid(string fileOutput)
+        {
+            char[,] grid = new char[9,9];
+
+            if (fileOutput.Length == 81)
+            {
+                foreach (char cell in fileOutput)
+                {
+
+                }
+            }
+            else
+            {
+
             }
         }
     }
