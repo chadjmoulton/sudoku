@@ -15,7 +15,7 @@ namespace Sudoku
             board = boardText;
         }
 
-        private char[,] Solve(char[,] board)
+        public char[,] Solve(char[,] board)
         {
             //defaults to decoy if no valid board
             char[,] decoy = new char[,] { { 'a', 'a' } };
@@ -25,18 +25,26 @@ namespace Sudoku
             {
                 for (int j = 0; j < 9; j++)
                 {
+                    if (board[i,j] == 'a')
+                    {
+                        return decoy;
+                    }
                     if (board[i, j] == 'X') //if empty
                     {
                         for (char num = '1'; num <= '9'; num++) //loop through possible entries
                         {
                             if (IsCorrect(board, i, j, num)) //check if entry is valid
                             {
-                                board[i, j] = num;
+                                board[i, j] = num;//set cell to valid entry 
+                                break;
                             }
+                            else board[i, j] = 'X';
                         }
                     }
                 }
             }
+
+            return board;
         }
 
         //confirm valid number placement by checking 3x3 cell, row, and column

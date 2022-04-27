@@ -15,6 +15,18 @@ namespace Sudoku
             string puzzle1 = AppDomain.CurrentDomain.BaseDirectory + "puzzle1.txt";
 
             char[,] grid1 = ReadFile(puzzle1);
+
+            Board board1 = new Board(grid1);
+            board1.Solve(board1.board);
+
+            for (int k = 0; k < 9; k++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    Debug.Write(board1.board[k, j]);
+                }
+                Debug.Write("\n");
+            }
         }
 
         static char[,] ReadFile(string puzzle)
@@ -41,14 +53,7 @@ namespace Sudoku
                             i += 1;
                         }
                     }
-                    for (int k = 0; k < 9; k++)
-                    {                        
-                        for (int j = 0; j < 9; j++)
-                        {
-                            Debug.Write(grid[k,j]);
-                        }
-                        Debug.Write("\n");
-                    }
+                    
                     return grid;
                 }
                 else
