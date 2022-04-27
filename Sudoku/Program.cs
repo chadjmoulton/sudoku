@@ -14,13 +14,14 @@ namespace Sudoku
         {
             string puzzle1 = AppDomain.CurrentDomain.BaseDirectory + "puzzle1.txt";
 
-            ReadFile(puzzle1);
+            char[,] grid1 = ReadFile(puzzle1);
         }
 
-        static void ReadFile(string puzzle)
+        static char[,] ReadFile(string puzzle)
         {
             string line;
             char[,] grid = new char[9, 9];
+            char[,] decoy = new char[,] { { 'a', 'a' } };
             int i = 0;
             //string fullFile = "";
 
@@ -36,12 +37,7 @@ namespace Sudoku
                             for(int j = 0; j < 9; j++)
                             {
                                 grid[i, j] = line[j];
-                                /*for(int j = 0; j < 9; j++)
-                                {
-                                    grid[i, j] = line[j];
-                                }*/
                             }
-                            //fullFile += line;
                             i += 1;
                         }
                     }
@@ -53,21 +49,21 @@ namespace Sudoku
                         }
                         Debug.Write("\n");
                     }
-                    //return fullFile;
+                    return grid;
                 }
                 else
                 {
-                    //return "";
+                    return decoy;
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-                //return "";
+                return decoy;
             }
         }
 
-        static void CreateGrid(string fileOutput)
+        /*static void CreateGrid(string fileOutput)
         {
             char[,] grid = new char[9,9];
 
@@ -82,6 +78,6 @@ namespace Sudoku
             {
 
             }
-        }
+        }*/
     }
 }
