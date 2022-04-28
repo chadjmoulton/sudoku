@@ -16,14 +16,17 @@ namespace Sudoku
 
             char[,] grid1 = ReadFile(puzzle1);
 
-            Board board1 = new Board(grid1);
-            board1.Solve(board1.board);
+            Board Game1 = new Board(grid1);
+            //solve(grid1);
+            //Board board1 = new Board(grid1);
+            //board1.Solve(board1.board);
 
             for (int k = 0; k < 9; k++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    Debug.Write(board1.board[k, j]);
+                    //Debug.Write(board1.board[k, j]);
+                    Debug.Write(grid1[k,j]);
                 }
                 Debug.Write("\n");
             }
@@ -64,25 +67,9 @@ namespace Sudoku
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
+                Environment.Exit(0);
                 return decoy;
             }
         }
-
-        /*static void CreateGrid(string fileOutput)
-        {
-            char[,] grid = new char[9,9];
-
-            if (fileOutput.Length == 81)
-            {
-                foreach (char cell in fileOutput)
-                {
-
-                }
-            }
-            else
-            {
-
-            }
-        }*/
     }
 }
