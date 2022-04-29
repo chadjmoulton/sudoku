@@ -145,60 +145,8 @@ namespace Sudoku
                     }
                     return false;
 
-                case 4:
-                    for (int x = 3; x < 6; x++)
-                    {
-                        for (int y = 0; y < 3; y++)
-                        {
-                            if (grid[x, y] == value)
-                            {
-                                return true;
-                            }
-                        }
-                    }
-                    return false;
-
-                case 7:
-                    for (int x = 6; x < 9; x++)
-                    {
-                        for (int y = 0; y < 3; y++)
-                        {
-                            if (grid[x, y] == value)
-                            {
-                                return true;
-                            }
-                        }
-                    }
-                    return false;
-
                 case 2:
                     for (int x = 0; x < 3; x++)
-                    {
-                        for (int y = 3; y < 6; y++)
-                        {
-                            if (grid[x, y] == value)
-                            {
-                                return true;
-                            }
-                        }
-                    }
-                    return false;
-
-                case 5:
-                    for (int x = 3; x < 6; x++)
-                    {
-                        for (int y = 3; y < 6; y++)
-                        {
-                            if (grid[x, y] == value)
-                            {
-                                return true;
-                            }
-                        }
-                    }
-                    return false;
-                   
-                case 8:
-                    for (int x = 6; x < 9; x++)
                     {
                         for (int y = 3; y < 6; y++)
                         {
@@ -223,6 +171,32 @@ namespace Sudoku
                     }
                     return false;
 
+                case 4:
+                    for (int x = 3; x < 6; x++)
+                    {
+                        for (int y = 0; y < 3; y++)
+                        {
+                            if (grid[x, y] == value)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+
+                case 5:
+                    for (int x = 3; x < 6; x++)
+                    {
+                        for (int y = 3; y < 6; y++)
+                        {
+                            if (grid[x, y] == value)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+
                 case 6:
                     for (int x = 3; x < 6; x++)
                     {
@@ -236,6 +210,32 @@ namespace Sudoku
                     }
                     return false;
 
+                case 7:
+                    for (int x = 6; x < 9; x++)
+                    {
+                        for (int y = 0; y < 3; y++)
+                        {
+                            if (grid[x, y] == value)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                                                 
+                case 8:
+                    for (int x = 6; x < 9; x++)
+                    {
+                        for (int y = 3; y < 6; y++)
+                        {
+                            if (grid[x, y] == value)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                
                 case 9:
                     for (int x = 6; x < 9; x++)
                     {
