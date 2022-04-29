@@ -31,22 +31,21 @@ namespace Sudoku
                             {
                                 board[i, j] = num;//set cell to valid entry 
                                 
-                                if (Solve(board))
+                                if (Solve(board))//recurses until true, because if not true, there was a contradiction on board and cell needs to be set back to empty
                                 {
-                                    Debug.Write("t" + board[0, 0] + "t");
                                     return true;
                                 }
                                 else
                                 {
-                                    board[i, j] = 'X';
+                                    board[i, j] = 'X';//set back to empty because found contradiction
                                 }
                             }
                         }
-                        return false;
+                        return false; //found contradiction on board
                     }
                 }
             }
-            return true;
+            return true; //no more empty or contradictory cells
         }
 
         //confirm valid number placement by checking 3x3 cell, row, and column
@@ -75,6 +74,14 @@ namespace Sudoku
             return true;
         }
 
+        //get the 3x3 quadrant an entry is in by checking it's coordinate
+        /*
+         *   1 | 2 | 3
+         *   _________
+         *   4 | 5 | 6
+         *   _________
+         *   7 | 8 | 9
+         */
         private static int GetQuadrant(int x, int y)
         {
             int quad = 0;
@@ -124,10 +131,10 @@ namespace Sudoku
                     quad = 9;
                 }
             }
-            Debug.Write(quad);
             return quad;
         }
 
+        //boolean returning true if a value is in a quadrant
         private static bool InQuadrant(char[,] grid, int quad, char value)
         {
             switch (quad)
