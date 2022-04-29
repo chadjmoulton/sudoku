@@ -145,7 +145,7 @@ namespace Sudoku
                     }
                     return false;
 
-                case 2:
+                case 4:
                     for (int x = 3; x < 6; x++)
                     {
                         for (int y = 0; y < 3; y++)
@@ -158,7 +158,7 @@ namespace Sudoku
                     }
                     return false;
 
-                case 3:
+                case 7:
                     for (int x = 6; x < 9; x++)
                     {
                         for (int y = 0; y < 3; y++)
@@ -171,7 +171,7 @@ namespace Sudoku
                     }
                     return false;
 
-                case 4:
+                case 2:
                     for (int x = 0; x < 3; x++)
                     {
                         for (int y = 3; y < 6; y++)
@@ -197,7 +197,7 @@ namespace Sudoku
                     }
                     return false;
                    
-                case 6:
+                case 8:
                     for (int x = 6; x < 9; x++)
                     {
                         for (int y = 3; y < 6; y++)
@@ -210,7 +210,7 @@ namespace Sudoku
                     }
                     return false;
 
-                case 7:
+                case 3:
                     for (int x = 0; x < 3; x++)
                     {
                         for (int y = 6; y < 9; y++)
@@ -223,7 +223,7 @@ namespace Sudoku
                     }
                     return false;
 
-                case 8:
+                case 6:
                     for (int x = 3; x < 6; x++)
                     {
                         for (int y = 6; y < 9; y++)
