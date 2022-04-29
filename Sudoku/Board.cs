@@ -15,7 +15,7 @@ namespace Sudoku
             board = boardText;
         }
 
-        private bool Solve(char[,] board)
+        public bool Solve(char[,] board)
         {
             //loop through individual cells to find empty
             for (int i = 0; i < 9; i++)
@@ -46,28 +46,26 @@ namespace Sudoku
         //confirm valid number placement by checking 3x3 cell, row, and column
         static bool IsValid(char[,] board, int row, int col, char value)
         {
-            bool correct = true;
-
+    
             for (int i = 0; i < 9; i++)
             {
                 //confirm number not in 3x3 cell
                 if (InQuadrant(board, GetQuadrant(row, col), value))
                 {
-                    correct = false;
+                    return false;
                 }
                 //confirm number not in row
                 if (board[i, col] != 'X' && board[i, col] == value)
                 {
-                    correct = false;
+                    return false;
                 }
                 //confirm number not in column
                 if (board[row, i] != 'X' && board[row, i] == value)
                 {
-                    correct = false;
+                    return false;
                 }
-                else correct = true;
             }
-            return correct;
+            return true;
         }
 
         private static int GetQuadrant(int x, int y)
@@ -89,7 +87,7 @@ namespace Sudoku
                     quad = 7;
                 }   
             }
-            if (3 <= x && x < 3)
+            if (3 <= x && x < 6)
             {
                 if (y < 3)
                 {

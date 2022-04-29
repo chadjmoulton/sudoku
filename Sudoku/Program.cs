@@ -17,16 +17,13 @@ namespace Sudoku
             char[,] grid1 = ReadFile(puzzle1);
 
             Board Game1 = new Board(grid1);
-            //solve(grid1);
-            //Board board1 = new Board(grid1);
-            //board1.Solve(board1.board);
+            Game1.Solve(Game1.board);
 
             for (int k = 0; k < 9; k++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    //Debug.Write(board1.board[k, j]);
-                    Debug.Write(grid1[k,j]);
+                    Debug.Write(Game1.board[k,j]);
                 }
                 Debug.Write("\n");
             }
