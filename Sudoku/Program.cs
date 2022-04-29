@@ -19,6 +19,7 @@ namespace Sudoku
             Board Game1 = new Board(grid1);
             Game1.Solve(Game1.board);
 
+
             for (int k = 0; k < 9; k++)
             {
                 for (int j = 0; j < 9; j++)

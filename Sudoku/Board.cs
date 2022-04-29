@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Text;
@@ -32,7 +33,12 @@ namespace Sudoku
                                 
                                 if (Solve(board))
                                 {
+                                    Debug.Write("t" + board[0, 0] + "t");
                                     return true;
+                                }
+                                else
+                                {
+                                    board[i, j] = 'X';
                                 }
                             }
                         }
@@ -46,14 +52,15 @@ namespace Sudoku
         //confirm valid number placement by checking 3x3 cell, row, and column
         static bool IsValid(char[,] board, int row, int col, char value)
         {
-    
-            for (int i = 0; i < 9; i++)
+
+            //confirm number not in 3x3 cell
+            if (InQuadrant(board, GetQuadrant(row, col), value))
             {
-                //confirm number not in 3x3 cell
-                if (InQuadrant(board, GetQuadrant(row, col), value))
-                {
-                    return false;
-                }
+                return false;
+            }
+
+            for (int i = 0; i < 9; i++)
+            {                
                 //confirm number not in row
                 if (board[i, col] != 'X' && board[i, col] == value)
                 {
@@ -80,18 +87,18 @@ namespace Sudoku
                 }
                 if (3 <= y && y < 6)
                 {
-                    quad = 4;
+                    quad = 2;
                 }
                 if (y >= 6)
                 {
-                    quad = 7;
+                    quad = 3;
                 }   
             }
             if (3 <= x && x < 6)
             {
                 if (y < 3)
                 {
-                    quad = 2;
+                    quad = 4;
                 }
                 if (3 <= y && y < 6)
                 {
@@ -99,24 +106,25 @@ namespace Sudoku
                 }
                 if (y >= 6)
                 {
-                    quad = 9;
+                    quad = 6;
                 }
             }
             if (x >= 6)
             {
                 if (y < 3)
                 {
-                    quad = 3;
+                    quad = 7;
                 }
                 if (3 <= y && y < 6)
                 {
-                    quad = 6;
+                    quad = 8;
                 }
                 if (y >= 6)
                 {
                     quad = 9;
                 }
             }
+            Debug.Write(quad);
             return quad;
         }
 
@@ -138,7 +146,7 @@ namespace Sudoku
                     return false;
 
                 case 2:
-                    for (int x = 3; x < 7; x++)
+                    for (int x = 3; x < 6; x++)
                     {
                         for (int y = 0; y < 3; y++)
                         {
